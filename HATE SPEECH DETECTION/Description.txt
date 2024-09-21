@@ -1,0 +1,32 @@
+Import Libraries
+Importing the necessary libraries, including pandas for manipulating the data, the natural language processing library nltk, re (regular expression) for text cleaning, and the set of tools from scikit-learn for building a classification model like DecisionTreeClassifier.
+
+Data Input:
+The data is loaded from a CSV file, twitter.csv, with the associated class of each tweet; they would be either Hate Speech class 0, Offensive Language class 1, or No Hate and Offensive class 2.
+This class column is aliased to labels:
+0 → Hate Speech
+1 → Crass language
+2 → No Hate and Offensive
+
+Data scrubbing:
+A function clean() is defined to preprocess and clean the tweet text.
+Write all the text in lowercase.
+Remove special characters such as URLs, punctuation, and numbers.
+Elimination of stop words. Stop words are those words that have no much meaning to the text, such as "the," "is," etc.
+Apply stemming using nltk.SnowballStemmer, which reduces words to their root form "running" reduces to "run".
+This cleaned data is then fed back into the tweet column of the dataset.
+
+Feature Extraction:
+The CountVectorizer is used for transforming the clean tweets into numerical vectors that represent word frequencies as input features for the machine learning model.
+
+Splitting the Data:
+The dataset is split into training and testing sets using train_test_split(). Here, 33 percent of the data is kept as test data, and the rest will be used for training:.
+
+Training the Model: 
+A Decision Tree Classifier is initialized and fit on the transformed tweet data (X_train) along with their corresponding labels (y_train).
+The Decision Tree Classifier is a supervised learning algorithm, trying to split the data on feature values in order to classify a tweet in any of the three categories.
+
+Model Testing and Precision: 
+Upon training the model, it is tested using the test set X_test. Here, the predicted labels are compared with the actual ones, given as y_test. The model prints out the accuracy score, which gives the percentage of how well the model performs in classifying the tweets. 
+
+Sample Forecast: The model is used to predict whether a sample tweet ("good kill") indicates hate speech, offense, or neither by first passing the text through the CountVectorizer and then applying it to the model.
